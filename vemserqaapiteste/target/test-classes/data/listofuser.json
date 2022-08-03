@@ -1,0 +1,12 @@
+[
+  {
+    "id": 5,
+    "username": "name",
+    "firstName": "fake",
+    "lastName": "fake",
+    "email": "string",
+    "password": "string",
+    "phone": "string",
+    "userStatus": 0
+  }
+]
