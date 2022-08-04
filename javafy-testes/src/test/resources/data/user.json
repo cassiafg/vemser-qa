@@ -1,0 +1,8 @@
+{
+  "nome": "teste5",
+  "dataNascimento": "2000-10-10",
+  "genero": "F",
+  "login": "teste5",
+  "senha": "teste",
+  "email": "faker@faker.com"
+}
