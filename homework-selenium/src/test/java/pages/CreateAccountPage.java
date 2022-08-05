@@ -34,8 +34,16 @@ public class CreateAccountPage {
     public static final By mobilePhone = By.cssSelector("#phone_mobile");
     public static final By btnRegister = By.cssSelector("#submitAccount");
     public static final By msgMyAccount = By.cssSelector("#columns > div.breadcrumb.clearfix > span.navigation_page");
+    public static final By msgErrors = By.cssSelector("#center_column > div > p");
+    public static final By msgErrorEmail = By.cssSelector("#create_account_error > ol > li");
     public void preencherEmail() {
         BaseTest.sendKeys(email, emailAddress);
+    }
+    public void preencherEmailJaCadastrado(){
+        BaseTest.sendKeys(email, "emailemail@email.com");
+    }
+    public void preencherEmailInvalido(){
+        BaseTest.sendKeys(email, "fake");
     }
     public void clicarBtnCreate() {
         BaseTest.click(btnCreate);
@@ -88,5 +96,11 @@ public class CreateAccountPage {
     }
     public String validarMsg() {
         return BaseTest.getText(msgMyAccount);
+    }
+    public String validarMsgErrors(){
+        return BaseTest.getText(msgErrors);
+    }
+    public String validarMsgErrorEmail(){
+        return BaseTest.getText(msgErrorEmail);
     }
 }

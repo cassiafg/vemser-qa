@@ -38,4 +38,40 @@ public class CreateAccountSteps extends Browser {
         //Validação
         Assert.assertEquals(createAccountPage.validarMsg(), "My account");
     }
+
+    @Test
+    public void cadastrarUsuarioSemPreencherCamposObrigatorios(){
+        //Acessar o SignIn
+        homepage.clicarBtnSignIn();
+        createAccountPage.preencherEmail();
+        createAccountPage.clicarBtnCreate();
+
+        //Clicar Register
+        createAccountPage.clicarRegister();
+
+        //Validação
+        Assert.assertEquals(createAccountPage.validarMsgErrors(), "There are 8 errors");
+    }
+
+    @Test
+    public void cadastrarUsuarioComEmailJaCadastrado(){
+        //Acessar o SignIn
+        homepage.clicarBtnSignIn();
+        createAccountPage.preencherEmailJaCadastrado();
+        createAccountPage.clicarBtnCreate();
+
+        //Validação
+        Assert.assertEquals(createAccountPage.validarMsgErrorEmail(), "An account using this email address has already been registered. Please enter a valid password or request a new one.");
+    }
+
+    @Test
+    public void cadastrarUsuarioComEmailInvalido(){
+        //Acessar o SignIn
+        homepage.clicarBtnSignIn();
+        createAccountPage.preencherEmailInvalido();
+        createAccountPage.clicarBtnCreate();
+
+        //Validação
+        Assert.assertEquals(createAccountPage.validarMsgErrorEmail(), "Invalid email address.");
+    }
 }
