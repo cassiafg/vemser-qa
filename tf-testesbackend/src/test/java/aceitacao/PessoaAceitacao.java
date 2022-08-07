@@ -329,6 +329,17 @@ public class PessoaAceitacao {
         Assert.assertEquals(resultService.getStatusCode(), 403);
     }
 
+    //GET - listar pessoas entre datas de nascimento
+    @Test
+    public void getPessoaEntreDatasDeNascimento() {
+        String data = "1990-01-01";
+        String dtFinal = "2020-01-01";
+        //GET - Chamada para o serviço
+        Response resultService = pessoaService.listarPessoasEntreDatasDeNascimento(data, dtFinal);
+        //Validações
+        Assert.assertEquals(resultService.getStatusCode(), 400);
+    }
+
     //GET - listar pessoa com contatos sem autorização
     @Test
     public void getPessoaEntreDatasDeNascimentoSemAutorizacao() {
@@ -352,6 +363,16 @@ public class PessoaAceitacao {
         Assert.assertEquals(resultService[0].getEmail(), pessoaCriada.getEmail());
         //Deletar pessoa criada
         pessoaService.deletarPessoaComSucesso(Integer.valueOf(resultService[0].getIdPessoa()));
+    }
+
+    //GET - listar pessoa por nome não encontrado
+    @Test
+    public void getPessoaPorNomeNaoEncontrado() {
+        String nome = "Nome inválido";
+        //GET - Chamada para o serviço
+        Response resultService = pessoaService.listarPessoaPorNomeNaoEncontrado(nome);
+        //Validações
+        Assert.assertEquals(resultService.getStatusCode(), 200);
     }
 
     //GET - listar pessoa pelo nome sem autorização

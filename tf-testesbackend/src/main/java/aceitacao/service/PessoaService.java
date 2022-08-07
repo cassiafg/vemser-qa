@@ -343,6 +343,18 @@ public class PessoaService {
         return result;
     }
 
+    public Response listarPessoasEntreDatasDeNascimento(String data, String dtFinal){
+        Response result = given().header("Authorization", token)
+                .log().all()
+                .when()
+                .get(baseuri + "/data-nascimento?data="+data+"&dtFinal="+dtFinal)
+                .then()
+                .log().all()
+                .statusCode(400)
+                .extract().response();
+        return result;
+    }
+
     public Response listarPessoaEntreDatasDeNascimentoSemAutorizacao(String data, String dtFinal){
         Response result = given()
                 .log().all()
@@ -364,6 +376,18 @@ public class PessoaService {
                 .log().all()
                 .statusCode(200)
                 .extract().as(PessoaDTO[].class);
+        return result;
+    }
+
+    public Response listarPessoaPorNomeNaoEncontrado(String nome){
+        Response result = given().header("Authorization", token)
+                .log().all()
+                .when()
+                .get(baseuri + "/byname?nome="+nome)
+                .then()
+                .log().all()
+                .statusCode(200)
+                .extract().response();
         return result;
     }
     public Response listarPessoaPeloNomeSemAutorizacao(String nome){
