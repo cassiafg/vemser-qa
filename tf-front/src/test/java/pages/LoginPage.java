@@ -17,6 +17,9 @@ public class LoginPage {
     public void preencherUsernameInvalido() {
         BaseTest.sendKeys(username, "fake_user");
     }
+    public void preencherUsernameBlockedUser(){BaseTest.sendKeys(username, "locked_out_user");}
+    public void preencherUsernameProblemUser(){BaseTest.sendKeys(username, "problem_user");}
+    public void preencherUsernamePerformanceGlitchUser(){BaseTest.sendKeys(username, "performance_glitch_user");}
     public void preencherPasswordValido() {
         BaseTest.sendKeys(password, "secret_sauce");
     }

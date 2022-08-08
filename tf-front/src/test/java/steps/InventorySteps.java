@@ -18,9 +18,19 @@ public class InventorySteps extends Browser {
         //Validação
         Assert.assertEquals(inventoryPage.validarMsgCartBackpack(), "Sauce Labs Backpack");
     }
+    @Test
+    public void adicionarBackpackAoCarrinhoComSucessoProblemUser(){
+        //Login com sucesso
+        loginSteps.loginProblemUser();
+        //Adicionar backpack ao carrinho
+        inventoryPage.clicarBtnAddBackpackToCart();
+        inventoryPage.clicarGoToCart();
+        //Validação
+        Assert.assertEquals(inventoryPage.validarMsgCartBackpack(), "Sauce Labs Backpack");
+    }
 
     @Test
-    public void adicionarBackpackAoCarrinhoSemSucesso(){
+    public void adicionarERemoverBackpackAoCarrinhoComSucesso(){
         //Login com sucesso
         loginSteps.loginComSucesso();
         //Adicionar backpack ao carrinho
@@ -32,13 +42,34 @@ public class InventorySteps extends Browser {
     }
 
     @Test
-    public void ordenarProdutosPorMenorPreco(){
+    public void adicionarERemoverBackpackAoCarrinhoSemSucesso(){
+        //Login com sucesso
+        loginSteps.loginProblemUser();
+        //Adicionar backpack ao carrinho
+        inventoryPage.clicarBtnAddBackpackToCart();
+        inventoryPage.clicarBtnRemoveBackpackFromCart();
+        inventoryPage.clicarGoToCart();
+        //Validação
+        Assert.assertEquals(inventoryPage.validarMsgCartBackpack(), "Sauce Labs Backpack");
+    }
+
+    @Test
+    public void ordenarProdutosPorMenorPrecoComSucesso(){
         //Login com sucesso
         loginSteps.loginComSucesso();
         //Ordenar produtos
         inventoryPage.filtrarPorMenorPreco();
         //Validação
         Assert.assertEquals(inventoryPage.validarMsgPriceLowToHigh(), "PRICE (LOW TO HIGH)");
+    }
+    @Test
+    public void ordenarProdutosPorMenorPrecoSemSucesso(){
+        //Login com sucesso
+        loginSteps.loginProblemUser();
+        //Ordenar produtos
+        inventoryPage.filtrarPorMenorPreco();
+        //Validação
+        Assert.assertEquals(inventoryPage.validarMsgPriceLowToHigh(), "NAME (A TO Z)");
     }
 
     @Test

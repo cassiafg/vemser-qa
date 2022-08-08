@@ -62,4 +62,17 @@ public class CheckoutSteps extends Browser {
         //Validação
         Assert.assertEquals(checkoutPage.validarMsgError(), "Error: Postal Code is required");
     }
+    @Test
+    public void finalizarCompraBackpackSemSucessoProblemUser(){
+        //Adicionar backpack ao carrinho
+        inventorySteps.adicionarBackpackAoCarrinhoComSucessoProblemUser();
+        //Finalizar compra
+        checkoutPage.clicarBtnCheckout();
+        checkoutPage.preencherFirstName();
+        checkoutPage.preencherLastName();
+        checkoutPage.preencherZipCode();
+        checkoutPage.clicarBtnContinue();
+        //Validação
+        Assert.assertEquals(checkoutPage.validarMsgError(), "Error: Last Name is required");
+    }
 }

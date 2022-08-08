@@ -52,4 +52,31 @@ public class LoginSteps extends Browser {
         //Validações
         Assert.assertEquals(loginPage.validarMsgUserInv(), "Epic sadface: Password is required");
     }
+    @Test
+    public void loginLockedOutUser(){
+        //Preencher dados de login
+        loginPage.preencherUsernameBlockedUser();
+        loginPage.preencherPasswordValido();
+        loginPage.clicarLogin();
+        //Validações
+        Assert.assertEquals(loginPage.validarMsgUserInv(), "Epic sadface: Sorry, this user has been locked out.");
+    }
+    @Test
+    public void loginProblemUser(){
+        //Preencher dados de login
+        loginPage.preencherUsernameProblemUser();
+        loginPage.preencherPasswordValido();
+        loginPage.clicarLogin();
+        //Validações
+        Assert.assertEquals(loginPage.validarMsgProducts(), "PRODUCTS");
+    }
+    @Test
+    public void loginPerformanceGlitchUser(){
+        //Preencher dados de login
+        loginPage.preencherUsernamePerformanceGlitchUser();
+        loginPage.preencherPasswordValido();
+        loginPage.clicarLogin();
+        //Validações
+        Assert.assertEquals(loginPage.validarMsgProducts(), "PRODUCTS");
+    }
 }
