@@ -9,7 +9,7 @@ public class InventorySteps extends Browser {
     LoginSteps loginSteps = new LoginSteps();
     InventoryPage inventoryPage = new InventoryPage();
     @Test
-    public void adicionarBackpackAoCarrinhoComSucesso(){
+    public void adicionarBackpackAoCarrinhoComSucessoStandardUser(){
         //Login com sucesso
         loginSteps.loginComSucesso();
         //Adicionar backpack ao carrinho
@@ -22,6 +22,16 @@ public class InventorySteps extends Browser {
     public void adicionarBackpackAoCarrinhoComSucessoProblemUser(){
         //Login com sucesso
         loginSteps.loginProblemUser();
+        //Adicionar backpack ao carrinho
+        inventoryPage.clicarBtnAddBackpackToCart();
+        inventoryPage.clicarGoToCart();
+        //Validação
+        Assert.assertEquals(inventoryPage.validarMsgCartBackpack(), "Sauce Labs Backpack");
+    }
+    @Test
+    public void adicionarBackpackAoCarrinhoComSucessoPerformanceGlitchUser(){
+        //Login com sucesso
+        loginSteps.loginPerformanceGlitchUser();
         //Adicionar backpack ao carrinho
         inventoryPage.clicarBtnAddBackpackToCart();
         inventoryPage.clicarGoToCart();
@@ -42,7 +52,7 @@ public class InventorySteps extends Browser {
     }
 
     @Test
-    public void adicionarERemoverBackpackAoCarrinhoSemSucesso(){
+    public void adicionarERemoverBackpackAoCarrinhoSemSucessoProblemUser(){
         //Login com sucesso
         loginSteps.loginProblemUser();
         //Adicionar backpack ao carrinho
@@ -63,7 +73,7 @@ public class InventorySteps extends Browser {
         Assert.assertEquals(inventoryPage.validarMsgPriceLowToHigh(), "PRICE (LOW TO HIGH)");
     }
     @Test
-    public void ordenarProdutosPorMenorPrecoSemSucesso(){
+    public void ordenarProdutosPorMenorPrecoSemSucessoProblemUser(){
         //Login com sucesso
         loginSteps.loginProblemUser();
         //Ordenar produtos
@@ -73,7 +83,7 @@ public class InventorySteps extends Browser {
     }
 
     @Test
-    public void adicionarBikeLightAoCarrinho(){
+    public void adicionarBikeLightAoCarrinhoComSucesso(){
         //Login com sucesso
         loginSteps.loginComSucesso();
         //Adicionar bike ligh

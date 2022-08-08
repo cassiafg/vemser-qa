@@ -9,9 +9,31 @@ public class MenuSteps extends Browser {
     LoginSteps loginSteps = new LoginSteps();
     MenuPage menuPage = new MenuPage();
     @Test
-    public void logoutComSucesso(){
+    public void logoutComSucessoStandardUser(){
         //Login
         loginSteps.loginComSucesso();
+        //Acessar menu
+        menuPage.clicarBtnMenu();
+        //Clicar logout
+        menuPage.clicarBtnLogout();
+        //Validaçõa
+        Assert.assertEquals(menuPage.validarMsgLogout(), "Password for all users:");
+    }
+    @Test
+    public void logoutComSucessoProblemUser(){
+        //Login
+        loginSteps.loginProblemUser();
+        //Acessar menu
+        menuPage.clicarBtnMenu();
+        //Clicar logout
+        menuPage.clicarBtnLogout();
+        //Validaçõa
+        Assert.assertEquals(menuPage.validarMsgLogout(), "Password for all users:");
+    }
+    @Test
+    public void logoutComSucessoPerformanceGlitchUser(){
+        //Login
+        loginSteps.loginPerformanceGlitchUser();
         //Acessar menu
         menuPage.clicarBtnMenu();
         //Clicar logout

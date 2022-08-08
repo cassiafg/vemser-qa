@@ -10,9 +10,9 @@ public class CheckoutSteps extends Browser {
     CheckoutPage checkoutPage = new CheckoutPage();
 
     @Test
-    public void finalizarCompraBackpackComSucesso(){
+    public void finalizarCompraBackpackComSucessoStandardUser(){
         //Adicionar backpack ao carrinho
-        inventorySteps.adicionarBackpackAoCarrinhoComSucesso();
+        inventorySteps.adicionarBackpackAoCarrinhoComSucessoStandardUser();
         //Finalizar compra
         checkoutPage.clicarBtnCheckout();
         checkoutPage.preencherFirstName();
@@ -26,7 +26,7 @@ public class CheckoutSteps extends Browser {
     @Test
     public void finalizarCompraBackpackSemSucessoLastnameEmBranco(){
         //Adicionar backpack ao carrinho
-        inventorySteps.adicionarBackpackAoCarrinhoComSucesso();
+        inventorySteps.adicionarBackpackAoCarrinhoComSucessoStandardUser();
         //Finalizar compra
         checkoutPage.clicarBtnCheckout();
         checkoutPage.preencherFirstName();
@@ -39,7 +39,7 @@ public class CheckoutSteps extends Browser {
     @Test
     public void finalizarCompraBackpackSemSucessoFirstNameEmBranco(){
         //Adicionar backpack ao carrinho
-        inventorySteps.adicionarBackpackAoCarrinhoComSucesso();
+        inventorySteps.adicionarBackpackAoCarrinhoComSucessoStandardUser();
         //Finalizar compra
         checkoutPage.clicarBtnCheckout();
         checkoutPage.firstNameEmBranco();
@@ -52,7 +52,7 @@ public class CheckoutSteps extends Browser {
     @Test
     public void finalizarCompraBackpackSemSucessoZipcodeEmBranco(){
         //Adicionar backpack ao carrinho
-        inventorySteps.adicionarBackpackAoCarrinhoComSucesso();
+        inventorySteps.adicionarBackpackAoCarrinhoComSucessoStandardUser();
         //Finalizar compra
         checkoutPage.clicarBtnCheckout();
         checkoutPage.preencherFirstName();
@@ -74,5 +74,19 @@ public class CheckoutSteps extends Browser {
         checkoutPage.clicarBtnContinue();
         //Validação
         Assert.assertEquals(checkoutPage.validarMsgError(), "Error: Last Name is required");
+    }
+    @Test
+    public void finalizarCompraBackpackComSucessoPerformanceGlitchUser(){
+        //Adicionar backpack ao carrinho
+        inventorySteps.adicionarBackpackAoCarrinhoComSucessoPerformanceGlitchUser();
+        //Finalizar compra
+        checkoutPage.clicarBtnCheckout();
+        checkoutPage.preencherFirstName();
+        checkoutPage.preencherLastName();
+        checkoutPage.preencherZipCode();
+        checkoutPage.clicarBtnContinue();
+        checkoutPage.clicarBtnFinish();
+        //Validação
+        Assert.assertEquals(checkoutPage.validarMsgThankYou(), "THANK YOU FOR YOUR ORDER");
     }
 }
