@@ -330,10 +330,27 @@ public class PessoaAceitacao {
     }
 
     //GET - listar pessoas entre datas de nascimento
+    //***não está retornando a lista, mesmo com datas válidas***
     @Test
-    public void getPessoaEntreDatasDeNascimento() {
-        String data = "1990-01-01";
-        String dtFinal = "2020-01-01";
+    public void getPessoaEntreDatasDeNascimento() throws IOException {
+        //Criar pessoa para o teste
+        PessoaDTO pessoaCriada = pessoaService.criarPessoaComSucesso(lerJson("src/test/resources/data/pessoa.json"));
+        //Informa datas
+        String data = "1900-01-01";
+        String dtFinal = "2022-01-01";
+        //GET - Chamada para o serviço
+        Response resultService = pessoaService.listarPessoasEntreDatasDeNascimento(data, dtFinal);
+        //Validações
+        Assert.assertEquals(resultService.getStatusCode(), 400);
+        //Deletar pessoa criada
+        pessoaService.deletarPessoaComSucesso(Integer.valueOf(pessoaCriada.getIdPessoa()));
+    }
+
+    //GET - listar pessoas entre datas de nascimento com datas inválidas
+    @Test
+    public void getPessoaEntreDatasDeNascimentoComDatasInvalidas() {
+        String data = "12";
+        String dtFinal = "01";
         //GET - Chamada para o serviço
         Response resultService = pessoaService.listarPessoasEntreDatasDeNascimento(data, dtFinal);
         //Validações

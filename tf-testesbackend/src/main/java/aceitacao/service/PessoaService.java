@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 
 public class PessoaService {
     String baseuri = "https://dbc-pessoa-api.herokuapp.com/pessoa";
-    String token = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ2ZW1zZXItYXBpIiwianRpIjoiMiIsImNhcmdvcyI6WyJST0xFX0FETUlOIiwiUk9MRV9VU1VBUklPIiwiUk9MRV9NQVJLRVRJTkciXSwiaWF0IjoxNjU5ODIxMjA2LCJleHAiOjE2NTk5MDc2MDZ9.y0WvF3yG3_hq8NXp2CooLX7JPWJ6E8TF61DsLPFSJmk";
+    String token = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ2ZW1zZXItYXBpIiwianRpIjoiMiIsImNhcmdvcyI6WyJST0xFX1VTVUFSSU8iLCJST0xFX0FETUlOIiwiUk9MRV9NQVJLRVRJTkciXSwiaWF0IjoxNjU5OTcwMTk2LCJleHAiOjE2NjAwNTY1OTZ9.Ld9-m-3y0VZ_H4602FFhCfNSeUT5eK1GfIiVW1hWuFQ";
 
     public PessoaDTO editarPessoaComSucesso(String jsonBody, Integer idPessoa){
         PessoaDTO result = given().header("Authorization", token)
