@@ -1,0 +1,44 @@
+npm - node package manager -> gerenciador de pacotes
+npx - node package executor -> executar o cypress
+
+
+1 - Especificar que vamos criar um projeto node
+2 - Instalar a dependência do cypress
+3 - Criar a estrutura de pasta inicial do cypress
+4 - Primeiro teste simples sem padrão
+
+
+
+suite de testes
+testes
+    comando do teste
+testes
+    comando do teste
+teste
+    comando do teste
+
+
+    ***Cenários
+describe('empty spec', () => {
+  it('passes', () => {
+    cy.visit('https://example.cypress.io')
+  })
+})
+
+    context('Todo', () => {
+  it('Inserir uma nova tarefa na lista', () => {
+    
+    // acessar a url do site
+    cy.visit('https://example.cypress.io');
+
+    cy.get('seletor')
+
+    cy.get('seletor').click();
+    cy.get('seletor').type('texto');
+    cy.get('seletor').select('');
+
+    // validações
+    cy.get('seletor').should('have.lenght', 1);
+    cy.get('seletor').should('contain', '');
+  })
+})
