@@ -1,0 +1,11 @@
+{
+    
+    "viewportWidth": 1000,
+    "viewportHeight": 660,
+    "defaultCommandTimeout": 500,
+    "experimentalSourceRewriting": true,
+    "watchForFileChanges": false,
+    "testFiles": "**/*.feature"
+
+    
+}
