@@ -1,0 +1,8 @@
+npm - node package manager -> gerenciador de pacotes
+npx - node package executor -> executar o cypress
+
+
+1 - Especificar que vamos criar um projeto node
+2 - Instalar a dependência do cypress
+3 - Criar a estrutura de pasta inicial do cypress
+4 - Primeiro teste simples sem padrão

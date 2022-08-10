@@ -1,0 +1,58 @@
+import UpdateCustomerPages from "../pages/UpdateCustomerPages";
+const updateCustomerPages = new UpdateCustomerPages
+
+import LoginPages from "../pages/LoginPages";
+const loginPages = new LoginPages
+
+context('Update Customer', () => {
+    it('editar customer com sucesso', () => {
+        loginPages.abrirNavegador()
+        loginPages.clicarBtnLogin()
+        loginPages.preencherCampoUsername()
+        loginPages.preencherCampoPassword()
+        loginPages.clicarBtnConfirmarLogin()
+        loginPages.validarMensagemSucesso()
+        updateCustomerPages.clicarBtnEdit()
+        updateCustomerPages.preencherNome()
+        updateCustomerPages.preencherCompany()
+        updateCustomerPages.preencherAddress()
+        updateCustomerPages.preencherCity()
+        updateCustomerPages.preencherPhone()
+        updateCustomerPages.preencherEmail()
+        updateCustomerPages.clicarBtnSave()
+        updateCustomerPages.validarMensagemSucesso()
+    })
+    it('editar customer sem sucesso (não clicar no botão save após preencher os dados)', () => {
+        loginPages.abrirNavegador()
+        loginPages.clicarBtnLogin()
+        loginPages.preencherCampoUsername()
+        loginPages.preencherCampoPassword()
+        loginPages.clicarBtnConfirmarLogin()
+        loginPages.validarMensagemSucesso()
+        updateCustomerPages.clicarBtnEdit()
+        updateCustomerPages.preencherNome()
+        updateCustomerPages.preencherCompany()
+        updateCustomerPages.preencherAddress()
+        updateCustomerPages.preencherCity()
+        updateCustomerPages.preencherPhone()
+        updateCustomerPages.preencherEmail()
+        updateCustomerPages.validarMensagemNaoClicou()
+    })
+    it('editar customer sem sucesso (clicar no botão back to list após preencher os dados)', () => {
+        loginPages.abrirNavegador()
+        loginPages.clicarBtnLogin()
+        loginPages.preencherCampoUsername()
+        loginPages.preencherCampoPassword()
+        loginPages.clicarBtnConfirmarLogin()
+        loginPages.validarMensagemSucesso()
+        updateCustomerPages.clicarBtnEdit()
+        updateCustomerPages.preencherNome()
+        updateCustomerPages.preencherCompany()
+        updateCustomerPages.preencherAddress()
+        updateCustomerPages.preencherCity()
+        updateCustomerPages.preencherPhone()
+        updateCustomerPages.preencherEmail()
+        updateCustomerPages.clicarBtnBackToList()
+        updateCustomerPages.validarMensagemMisclick()
+    })
+})

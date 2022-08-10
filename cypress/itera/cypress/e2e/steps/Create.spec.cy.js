@@ -1,0 +1,58 @@
+import CreateCustomerPages from "../pages/CreateCustomerPages";
+const createCustomerPages = new CreateCustomerPages
+
+import LoginPages from "../pages/LoginPages";
+const loginPages = new LoginPages
+
+context('Create Customer', () => {
+    it('criar customer com sucesso', () => {
+        loginPages.abrirNavegador()
+        loginPages.clicarBtnLogin()
+        loginPages.preencherCampoUsername()
+        loginPages.preencherCampoPassword()
+        loginPages.clicarBtnConfirmarLogin()
+        loginPages.validarMensagemSucesso()
+        createCustomerPages.clicarBtnCreateNew()
+        createCustomerPages.preencherNome()
+        createCustomerPages.preencherCompany()
+        createCustomerPages.preencherAddress()
+        createCustomerPages.preencherCity()
+        createCustomerPages.preencherPhone()
+        createCustomerPages.preencherEmail()
+        createCustomerPages.clicarBtnCreate()
+        createCustomerPages.validarMensagemSucesso()
+    })
+    it('criar customer sem sucesso (não clicar no botão create após preencher os dados)', () => {
+        loginPages.abrirNavegador()
+        loginPages.clicarBtnLogin()
+        loginPages.preencherCampoUsername()
+        loginPages.preencherCampoPassword()
+        loginPages.clicarBtnConfirmarLogin()
+        loginPages.validarMensagemSucesso()
+        createCustomerPages.clicarBtnCreateNew()
+        createCustomerPages.preencherNome()
+        createCustomerPages.preencherCompany()
+        createCustomerPages.preencherAddress()
+        createCustomerPages.preencherCity()
+        createCustomerPages.preencherPhone()
+        createCustomerPages.preencherEmail()
+        createCustomerPages.validarMensagemNaoClicou()
+    })
+    it('criar customer sem sucesso (clicar no botão back to list após preencher os dados)', () => {
+        loginPages.abrirNavegador()
+        loginPages.clicarBtnLogin()
+        loginPages.preencherCampoUsername()
+        loginPages.preencherCampoPassword()
+        loginPages.clicarBtnConfirmarLogin()
+        loginPages.validarMensagemSucesso()
+        createCustomerPages.clicarBtnCreateNew()
+        createCustomerPages.preencherNome()
+        createCustomerPages.preencherCompany()
+        createCustomerPages.preencherAddress()
+        createCustomerPages.preencherCity()
+        createCustomerPages.preencherPhone()
+        createCustomerPages.preencherEmail()
+        createCustomerPages.clicarBtnBackToList()
+        createCustomerPages.validarMensagemMisclick()
+    })
+})
