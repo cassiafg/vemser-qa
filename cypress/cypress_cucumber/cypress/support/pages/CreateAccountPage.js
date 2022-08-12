@@ -16,13 +16,17 @@ export default class CreateAccountPage {
         utils.navegar(site);
     }
 
+    preencherEmailExample(email){
+        utils.preencherInput(createAccountElements.campoEmail, email);
+    }
+
     preencherEmail() {
         utils.preencherInput(createAccountElements.campoEmail, email);
     }
 
     clicarNoBtnCreate() {
         utils.click(createAccountElements.btnCreate);
-        utils.tempo(9000)
+        utils.tempo(16000)
     }
     
     clicarNoBtnGender() {
@@ -68,5 +72,17 @@ export default class CreateAccountPage {
     clicarNoBtnRegister(){
         utils.click(createAccountElements.btnRegister);
         utils.tempo(9000)
+    }
+
+    validarMsgError(mensagem){
+        utils.validarText(createAccountElements.msgError, mensagem);
+    }
+
+    validarBtnRegister(){
+        utils.validarText(createAccountElements.btnRegister, 'Register');
+    }
+
+    validarBtnCreate(){
+        utils.validarText(createAccountElements.btnCreate, 'Create an account');
     }
 }

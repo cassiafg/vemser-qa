@@ -58,3 +58,19 @@ And('preencho com phone {}', (phone) => {
 And('clico no botao register', () => {
     createAccountPage.clicarNoBtnRegister()
 })
+
+And('preencho com email {}', (email) => {
+    createAccountPage.preencherEmailExample(email)
+})
+
+Then('devo visualizar mensagem de erro', (mensagem) => {
+    createAccountPage.validarMsgError(mensagem)
+})
+
+Then('devo visualizar botao register', () => {
+    createAccountPage.validarBtnRegister()
+})
+
+Then('devo visualizar botao create', () => {
+    createAccountPage.validarBtnCreate()
+})

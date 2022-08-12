@@ -13,4 +13,6 @@ export default class CreateAccountElements{
     campoPostalCode  = "#postcode"
     campoPhone       = "#phone_mobile"
     btnRegister      = "#submitAccount"
+    msgError         = "#create_account_error > ol > li"
+    
 }
